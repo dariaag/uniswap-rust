@@ -52,4 +52,8 @@ impl Uniswap {
             .unwrap();
         return U256::from_big_endian(&data);
     }
+    fn create_transaction<P, D>(&self, &contract: Contract, &func: String, &tx_params: P) -> D {
+        let data = contract.call(func, tx_params, None).unwrap();
+        return data;
+    }
 }
