@@ -1,5 +1,5 @@
-use ethers::types::{Address, U256};
 use fmt::std::{Debug, Display, Result as FmtResult};
+use web3::types::{Address, U256};
 
 //generic token
 pub struct Token {
