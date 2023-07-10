@@ -52,8 +52,19 @@ impl Uniswap {
             .unwrap();
         return U256::from_big_endian(&data);
     }
+
     fn create_transaction<P, D>(&self, &contract: Contract, &func: String, &tx_params: P) -> D {
         let data = contract.call(func, tx_params, None).unwrap();
         return data;
+    }
+
+    fn get_contract(&self, &address: Address, &name: String) -> Contract {
+        let contract = Contract::from_json(
+            self.web3.eth(),
+            address,
+            include_bytes!("../abi/${name}.json"),
+        )
+        .unwrap();
+        return contract;
     }
 }
